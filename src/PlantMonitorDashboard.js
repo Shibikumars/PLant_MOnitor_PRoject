@@ -140,7 +140,7 @@ const PlantMonitorDashboard = () => {
                 }}
                 labelStyle={{ color: '#333' }}
               />
-              <Legend verticalAlign="top" height={36} />
+              <Legend verticalAlign="left" height={36} />
               <Line
                 type="monotone"
                 dataKey="moisture"
