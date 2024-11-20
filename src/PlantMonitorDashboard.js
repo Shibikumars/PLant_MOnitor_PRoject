@@ -36,6 +36,7 @@ const PlantMonitorDashboard = () => {
   return (
     <div className="bg-gradient-to-br from-green-500 to-green-700 min-h-screen flex items-center justify-center p-4">
       <div className="bg-white shadow-2xl rounded-2xl w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12">
+        
         {/* Header */}
         <div className="bg-green-800 text-white p-6 flex justify-between items-center">
           <h1 className="text-3xl md:text-4xl font-bold">Inventify Team Project</h1>
@@ -107,20 +108,60 @@ const PlantMonitorDashboard = () => {
         {/* Historical Chart */}
         <div className="p-6 md:p-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-gray-800">Sensor History</h2>
-          <div className="bg-white border-2 border-green-500 rounded-xl shadow-lg p-5 sm:p-6">
-            <LineChart width={800} height={400} data={historicalData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-              <XAxis dataKey="time" stroke="#888" >
-                <Label value="Time" offset={0} position="insideBottom" />
+          <div className="bg-white border-2 border-green-500 rounded-xl shadow-lg p-5 sm:p-6 flex justify-center">
+            <LineChart
+              width={600} // Static size
+              height={300}
+              data={historicalData}
+              margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="#ddd" />
+              <XAxis dataKey="time" stroke="#555">
+                <Label
+                  value="Time"
+                  offset={-5}
+                  position="insideBottom"
+                  style={{ fontSize: '14px', fill: '#666' }}
+                />
               </XAxis>
-              <YAxis stroke="#888">
-                <Label value="Sensor Readings" angle="-90" position="insideLeft" />
+              <YAxis stroke="#555">
+                <Label
+                  value="Sensor Readings"
+                  angle="-90"
+                  position="insideLeft"
+                  style={{ fontSize: '14px', fill: '#666' }}
+                />
               </YAxis>
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="moisture" stroke="#10B981" strokeWidth={3} />
-              <Line type="monotone" dataKey="temperature" stroke="#F43F5E" strokeWidth={3} />
-              <Line type="monotone" dataKey="light" stroke="#3B82F6" strokeWidth={3} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#fff',
+                  border: '1px solid #ccc',
+                  borderRadius: '5px',
+                }}
+                labelStyle={{ color: '#333' }}
+              />
+              <Legend verticalAlign="top" height={36} />
+              <Line
+                type="monotone"
+                dataKey="moisture"
+                stroke="#10B981"
+                strokeWidth={3}
+                activeDot={{ r: 8 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="temperature"
+                stroke="#F43F5E"
+                strokeWidth={3}
+                activeDot={{ r: 8 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="light"
+                stroke="#3B82F6"
+                strokeWidth={3}
+                activeDot={{ r: 8 }}
+              />
             </LineChart>
           </div>
         </div>
